@@ -13,6 +13,31 @@ Before you begin, make sure you have:
 
 > **Note:** CLI names and commands can change between releases. Confirm the current command syntax in the official documentation for the tools and versions you install before running commands.
 
+## Workflow Diagram
+
+This Mermaid flowchart is embedded directly in the Markdown. GitHub automatically renders Mermaid diagrams in README files.
+
+```mermaid
+flowchart TD
+    A([Start]) --> B[Create Google Cloud project]
+    B --> C[Enable required APIs and configure IAM]
+    C --> D[Configure authentication with ADC]
+    D --> E[Install and initialize AI coding agent]
+    E --> F[Install Agent CLI and core Agent Skills]
+    F --> G[Prompt agent to build Kubernetes investigator]
+    G --> H[Generate project files with ADK]
+    H --> I[Prepare Kubernetes logs in error.txt]
+    I --> J[Run agent against log file]
+    J --> K[Analyze logs and identify likely root cause]
+    K --> L[Review evidence and remediation recommendations]
+    L --> M{Human review}
+    M -->|Need more evidence| I
+    M -->|Approved| N[Apply remediation using approved process]
+    N --> O([End])
+```
+
+**Flow summary:** Prepare Google Cloud → authenticate → install tools and skills → build the agent → provide logs → inspect findings → have a human validate recommendations before making cluster changes.
+
 ## 1. Prepare the Google Cloud Environment
 
 1. Create a dedicated Google Cloud project for your agent.
